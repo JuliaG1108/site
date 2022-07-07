@@ -1,19 +1,18 @@
 ---
 title: "About"
-image: profile.jpg
+image: julinha.jpg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
+    - icon: instagram
+      text: Instagram
+      href: https://www.instagram.com/juliagualbeerto/?hl=pt-br
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/j%C3%BAlia-gualberto-ab3907174/
     - icon: github
       text: Github
-      href: https://github.com
-
+      href: https://github.com/JuliaG1108
 ---
 
-About this blog
+Meu nome é Júlia Gualberto, sou estudante de estatística e esse é meu blog.
