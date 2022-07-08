@@ -13,3 +13,4 @@ Neste estudo de caso, queremos avaliar se estruturas com funções parecidas de 
 
 Para comparar as duas estruturas requere-se um mapa de calor (Heatmap) que permita realizar a comparação dos pares de nucleotı́deos. Comente sobre os resultados encontrados.
 
+![](genoma.jpeg)
