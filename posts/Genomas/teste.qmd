@@ -20,9 +20,7 @@ Para comparar as duas estruturas requere-se um mapa de calor (Heatmap) que permi
 library(reticulate)
 ```
 
-```{python}
-#!pip install matplotlib
-```
+### Influenza
 
 ```{python}
 import numpy as np
@@ -73,4 +71,54 @@ plt.title("Influenza A")
 plt.show()
 
 ```
+
+### Covid
+
+```{python}
+covid = open('sequence-covid.txt').read() # Ler o arquivo
+
+covid = covid.replace("\n","") # retirar os "\n"
+pares_covid = [
+    covid[i] + covid[i + 1] for i in range(len(covid) - 1)
+]
+
+```
+
+
+```{python}
+from itertools import permutations
+
+genes = ['A', 'T', 'C', 'G']
+
+combinations_genes = list(permutations(genes, 2))
+
+
+todos_genes = [''.join(i) for i in combinations_genes]
+todos_genes.extend(['AA', 'TT', 'CC', 'GG'])
+
+# dicionario
+genes_dict = {i:pares_covid.count(i) for i in todos_genes}
+
+# colocar em ordem
+ordered_dict = sorted(genes_dict.items(), key=lambda x: x[0], reverse=False)
+
+ordered_dict = {i[0]:i[1] for i in ordered_dict}
+
+# matriz
+matriz_covid = np.array(list(ordered_dict.values())).reshape(4,4)
+
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+plt.imshow(matriz_influenza, cmap = 'Blues', origin="lower")
+plt.xlabel('Índice da linha'); plt.ylabel('Índice da coluna')
+plt.xticks((0,1,2,3),['A','C', 'G', 'T'])
+plt.yticks([0,1,2,3],['A', "C", "G", "T"])
+plt.title("Covid")
+plt.show()
+
+```
+
 

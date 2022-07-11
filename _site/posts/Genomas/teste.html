@@ -202,63 +202,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Neste estudo de caso, queremos avaliar se estruturas com funções parecidas de organismos diferentes têm diferenças. Para isso vamos avaliar a quantidade de pares de nucleotı́deos.</p>
 <p>Para comparar as duas estruturas requere-se um mapa de calor (Heatmap) que permita realizar a comparação dos pares de nucleotı́deos. Comente sobre os resultados encontrados.</p>
 <p><img src="genoma.jpeg" class="img-fluid"></p>
+<section id="influenza" class="level3">
+<h3 class="anchored" data-anchor-id="influenza">Influenza</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install matplotlib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>influenza <span class="op">=</span> <span class="bu">open</span>(<span class="st">'sequence-influenza.txt'</span>).read() <span class="co"># Ler o arquivo</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>influenza <span class="op">=</span> influenza.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,<span class="st">""</span>) <span class="co"># retirar os "\n"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pares_influenza <span class="op">=</span> [</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    influenza[i] <span class="op">+</span> influenza[i <span class="op">+</span> <span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(influenza) <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>influenza <span class="op">=</span> <span class="bu">open</span>(<span class="st">'sequence-influenza.txt'</span>).read() <span class="co"># Ler o arquivo</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>influenza <span class="op">=</span> influenza.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,<span class="st">""</span>) <span class="co"># retirar os "\n"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pares_influenza <span class="op">=</span> [</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    influenza[i] <span class="op">+</span> influenza[i <span class="op">+</span> <span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(influenza) <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>genes <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'T'</span>, <span class="st">'C'</span>, <span class="st">'G'</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>combinations_genes <span class="op">=</span> <span class="bu">list</span>(permutations(genes, <span class="dv">2</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>todos_genes <span class="op">=</span> [<span class="st">''</span>.join(i) <span class="cf">for</span> i <span class="kw">in</span> combinations_genes]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>todos_genes.extend([<span class="st">'AA'</span>, <span class="st">'TT'</span>, <span class="st">'CC'</span>, <span class="st">'GG'</span>])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionario</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>genes_dict <span class="op">=</span> {i:pares_influenza.count(i) <span class="cf">for</span> i <span class="kw">in</span> todos_genes}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># colocar em ordem</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ordered_dict <span class="op">=</span> <span class="bu">sorted</span>(genes_dict.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">0</span>], reverse<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ordered_dict <span class="op">=</span> {i[<span class="dv">0</span>]:i[<span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> ordered_dict}</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># matriz</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>matriz_influenza <span class="op">=</span> np.array(<span class="bu">list</span>(ordered_dict.values())).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>genes <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'T'</span>, <span class="st">'C'</span>, <span class="st">'G'</span>]</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>combinations_genes <span class="op">=</span> <span class="bu">list</span>(permutations(genes, <span class="dv">2</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>todos_genes <span class="op">=</span> [<span class="st">''</span>.join(i) <span class="cf">for</span> i <span class="kw">in</span> combinations_genes]</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>todos_genes.extend([<span class="st">'AA'</span>, <span class="st">'TT'</span>, <span class="st">'CC'</span>, <span class="st">'GG'</span>])</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionario</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>genes_dict <span class="op">=</span> {i:pares_influenza.count(i) <span class="cf">for</span> i <span class="kw">in</span> todos_genes}</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># colocar em ordem</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ordered_dict <span class="op">=</span> <span class="bu">sorted</span>(genes_dict.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">0</span>], reverse<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ordered_dict <span class="op">=</span> {i[<span class="dv">0</span>]:i[<span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> ordered_dict}</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># matriz</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>matriz_influenza <span class="op">=</span> np.array(<span class="bu">list</span>(ordered_dict.values())).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(matriz_influenza, cmap <span class="op">=</span> <span class="st">'Blues'</span>, origin<span class="op">=</span><span class="st">"lower"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Índice da linha'</span>)<span class="op">;</span> plt.ylabel(<span class="st">'Índice da coluna'</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.xticks((<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),[<span class="st">'A'</span>,<span class="st">'C'</span>, <span class="st">'G'</span>, <span class="st">'T'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(matriz_influenza, cmap <span class="op">=</span> <span class="st">'Blues'</span>, origin<span class="op">=</span><span class="st">"lower"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Índice da linha'</span>)<span class="op">;</span> plt.ylabel(<span class="st">'Índice da coluna'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.xticks((<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),[<span class="st">'A'</span>,<span class="st">'C'</span>, <span class="st">'G'</span>, <span class="st">'T'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>([&lt;matplotlib.axis.XTick object at 0x03BD15F8&gt;, &lt;matplotlib.axis.XTick object at 0x03BD15E0&gt;, &lt;matplotlib.axis.XTick object at 0x03BD1178&gt;, &lt;matplotlib.axis.XTick object at 0x03C0FB80&gt;], [Text(0, 0, 'A'), Text(1, 0, 'C'), Text(2, 0, 'G'), Text(3, 0, 'T')])</code></pre>
+<pre><code>([&lt;matplotlib.axis.XTick object at 0x1C8045C8&gt;, &lt;matplotlib.axis.XTick object at 0x1C8045B0&gt;, &lt;matplotlib.axis.XTick object at 0x1C804148&gt;, &lt;matplotlib.axis.XTick object at 0x1C83FB50&gt;], [Text(0, 0, 'A'), Text(1, 0, 'C'), Text(2, 0, 'G'), Text(3, 0, 'T')])</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.yticks([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="st">'A'</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.yticks([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="st">'A'</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>([&lt;matplotlib.axis.YTick object at 0x03BD1A48&gt;, &lt;matplotlib.axis.YTick object at 0x03BD19B8&gt;, &lt;matplotlib.axis.YTick object at 0x03BD1160&gt;, &lt;matplotlib.axis.YTick object at 0x03C0FCB8&gt;], [Text(0, 0, 'A'), Text(0, 1, 'C'), Text(0, 2, 'G'), Text(0, 3, 'T')])</code></pre>
+<pre><code>([&lt;matplotlib.axis.YTick object at 0x1C804A18&gt;, &lt;matplotlib.axis.YTick object at 0x1C804988&gt;, &lt;matplotlib.axis.YTick object at 0x1C804130&gt;, &lt;matplotlib.axis.YTick object at 0x1C83FC88&gt;], [Text(0, 0, 'A'), Text(0, 1, 'C'), Text(0, 2, 'G'), Text(0, 3, 'T')])</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Influenza A"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Influenza A"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="teste_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="teste_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="covid" class="level3">
+<h3 class="anchored" data-anchor-id="covid">Covid</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>covid <span class="op">=</span> <span class="bu">open</span>(<span class="st">'sequence-covid.txt'</span>).read() <span class="co"># Ler o arquivo</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>covid <span class="op">=</span> covid.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,<span class="st">""</span>) <span class="co"># retirar os "\n"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>pares_covid <span class="op">=</span> [</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    covid[i] <span class="op">+</span> covid[i <span class="op">+</span> <span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(covid) <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> permutations</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>genes <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'T'</span>, <span class="st">'C'</span>, <span class="st">'G'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>combinations_genes <span class="op">=</span> <span class="bu">list</span>(permutations(genes, <span class="dv">2</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>todos_genes <span class="op">=</span> [<span class="st">''</span>.join(i) <span class="cf">for</span> i <span class="kw">in</span> combinations_genes]</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>todos_genes.extend([<span class="st">'AA'</span>, <span class="st">'TT'</span>, <span class="st">'CC'</span>, <span class="st">'GG'</span>])</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># dicionario</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>genes_dict <span class="op">=</span> {i:pares_covid.count(i) <span class="cf">for</span> i <span class="kw">in</span> todos_genes}</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># colocar em ordem</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>ordered_dict <span class="op">=</span> <span class="bu">sorted</span>(genes_dict.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">0</span>], reverse<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>ordered_dict <span class="op">=</span> {i[<span class="dv">0</span>]:i[<span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> ordered_dict}</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># matriz</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>matriz_covid <span class="op">=</span> np.array(<span class="bu">list</span>(ordered_dict.values())).reshape(<span class="dv">4</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(matriz_influenza, cmap <span class="op">=</span> <span class="st">'Blues'</span>, origin<span class="op">=</span><span class="st">"lower"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Índice da linha'</span>)<span class="op">;</span> plt.ylabel(<span class="st">'Índice da coluna'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.xticks((<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),[<span class="st">'A'</span>,<span class="st">'C'</span>, <span class="st">'G'</span>, <span class="st">'T'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>([&lt;matplotlib.axis.XTick object at 0x1D4DD850&gt;, &lt;matplotlib.axis.XTick object at 0x1D4DD868&gt;, &lt;matplotlib.axis.XTick object at 0x1D4DD0E8&gt;, &lt;matplotlib.axis.XTick object at 0x1D4EFE68&gt;], [Text(0, 0, 'A'), Text(1, 0, 'C'), Text(2, 0, 'G'), Text(3, 0, 'T')])</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.yticks([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="st">'A'</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>([&lt;matplotlib.axis.YTick object at 0x1D4E1088&gt;, &lt;matplotlib.axis.YTick object at 0x1D4DDCA0&gt;, &lt;matplotlib.axis.YTick object at 0x1D3E2C10&gt;, &lt;matplotlib.axis.YTick object at 0x1D4EFCB8&gt;], [Text(0, 0, 'A'), Text(0, 1, 'C'), Text(0, 2, 'G'), Text(0, 3, 'T')])</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Covid"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="teste_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
