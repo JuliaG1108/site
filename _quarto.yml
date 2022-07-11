@@ -12,7 +12,7 @@ website:
         href: https://www.instagram.com/juliagualbeerto/?hl=pt-br
 format:
   html:
-    theme: lux
+    theme: flatly
     css: styles.css
 
 editor: visual
