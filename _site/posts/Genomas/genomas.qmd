@@ -15,4 +15,12 @@ Para comparar as duas estruturas requere-se um mapa de calor (Heatmap) que permi
 
 ![](genoma.jpeg)
 
+```{r,include=FALSE, warning=FALSE}
+library(reticulate)
+```
+
+
+```{python}
+import numpy as np
+```
 
