@@ -2,7 +2,7 @@
 title: "Comparação de Genomas"
 author: "Júlia Gualberto"
 date: "2022-06-30"
-categories: [code, analytics]
+categories: [code, analytics, python]
 ---
 
 Pretende-se comparar duas sequências de DNA: SARS-CoV-2 identificado na cidade de Wuhan (China) e o Virus da Influenza A identificado na California (US).
