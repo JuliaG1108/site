@@ -13,14 +13,13 @@ O desafio proposto tinha como principal objetivo prever quando o filtro está to
 
 A bancada experimental é composta por:
 
-- Bomba;
-- Amortecedor;
-- Partículas;
-- Sensores de vazão;
-- Filtro.
+-   Bomba;
+-   Amortecedor;
+-   Partículas;
+-   Sensores de vazão;
+-   Filtro.
 
 ![](bancada.jpg)
-
 
 ### Pré Processamento
 
@@ -67,6 +66,7 @@ files = os.listdir(path + '\\Large')
 files_csv_large = [f for f in files if f[-3:] == 'csv']
 files_csv_large
 ```
+
 ```{python}
 def butter_lowpass_filter(data, cutoff, fs, order,nyq=5):
     normal_cutoff = cutoff / nyq
@@ -160,7 +160,7 @@ df_profiles = pd.read_excel(path + '\\Training Operation Profiles of Samples.xls
 
 Processo de examinar os dados previamente afim de obter um entendimento básico sobre os dados e relações existentes entre as variáveis.
 
-- **Gráfico 1**
+-   **Gráfico 1**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -177,7 +177,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 2**
+-   **Gráfico 2**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -194,7 +194,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 3**
+-   **Gráfico 3**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -211,7 +211,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 4**
+-   **Gráfico 4**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -228,7 +228,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 5**
+-   **Gráfico 5**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -246,7 +246,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 6**
+-   **Gráfico 6**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -265,7 +265,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 7**
+-   **Gráfico 7**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -276,7 +276,7 @@ plt.title("BoxPlot Filtered_Up", fontsize = 20)
 plt.show(ax)
 ```
 
-- **Gráfico 8**
+-   **Gráfico 8**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -294,7 +294,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 9**
+-   **Gráfico 9**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -312,7 +312,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 10**
+-   **Gráfico 10**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -330,7 +330,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 11**
+-   **Gráfico 11**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -348,7 +348,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 12**
+-   **Gráfico 12**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -366,8 +366,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-
-- **Gráfico 13**
+-   **Gráfico 13**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -385,7 +384,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 14**
+-   **Gráfico 14**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -403,7 +402,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 15**
+-   **Gráfico 15**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -421,7 +420,7 @@ plt.tick_params(labelsize=15)
 plt.show()
 ```
 
-- **Gráfico 16**
+-   **Gráfico 16**
 
 ```{python}
 plt.figure(figsize=(20,10))
@@ -432,7 +431,7 @@ plt.title("BoxPlot Filtered_Flow", fontsize = 20)
 plt.show(ax)
 ```
 
-- **Gráfico 17**
+-   **Gráfico 17**
 
 ```{python}
 g=sns.lmplot( x="TTF_Filter", y="Solid_Ratio", data=df_train, fit_reg=False, hue='Particle_Large', legend= False)
@@ -443,8 +442,7 @@ g.fig.set_size_inches(20,10)
 plt.show()
 ```
 
-
-- **Gráfico 19**
+-   **Gráfico 19**
 
 ```{python}
 df_cor = (df_train.loc[:,['RUL_Filter','Filtered_Up', 'Clogged_Filter', 'Filtered_Diff', 'Filtered_Down','Filtered_Flow', 'Solid_Ratio']])
@@ -456,7 +454,7 @@ plt.title("Correlação com RUL", fontsize = 20)
 plt.show(ax)
 ```
 
-- **Gráfico 20**
+-   **Gráfico 20**
 
 ```{python}
 def dual_heat_map(data,figsize=(25,15),dual=True):
