@@ -2,7 +2,7 @@
 title: "European Conference of the PHM Society - Data Challenge - 2020"
 author: "Júlia Gualberto, Eduardo Bragato, André Lucas e Edson Andrade"
 date: "2021-07-29"
-categories: [code, challenge, python]
+categories: [code, challenge, python, machine learning]
 ---
 
 ### Objetivo
