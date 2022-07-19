@@ -484,5 +484,5 @@ def dual_heat_map(data,figsize=(25,15),dual=True):
 ```
 
 ```{python}
-dual_heat_map(df_cor)
+dual_heat_map(df_cor,figsize=(25,15))
 ```
