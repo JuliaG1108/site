@@ -223,27 +223,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Podemos visualizar no código a seguir:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">'whitegrid'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openpyxl</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression, Ridge, Lasso, ElasticNet</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, RobustScaler, MinMaxScaler, OneHotEncoder</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, GridSearchCV, cross_val_score</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.signal <span class="im">import</span> butter,filtfilt</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> yellowbrick.target <span class="im">import</span> FeatureCorrelation</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">'whitegrid'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openpyxl</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression, Ridge, Lasso, ElasticNet</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, RobustScaler, MinMaxScaler, OneHotEncoder</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, GridSearchCV, cross_val_score</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.signal <span class="im">import</span> butter,filtfilt</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> yellowbrick.target <span class="im">import</span> FeatureCorrelation</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.getcwd()</span>
@@ -295,79 +297,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    count<span class="op">+=</span><span class="dv">1</span></span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:27: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.</code></pre>
-</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> os.listdir(path <span class="op">+</span> <span class="st">'</span><span class="ch">\\</span><span class="st">Small'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>files_csv_small <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> files <span class="cf">if</span> f[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'csv'</span>]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>files_csv_small</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> os.listdir(path <span class="op">+</span> <span class="st">'</span><span class="ch">\\</span><span class="st">Small'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>files_csv_small <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> files <span class="cf">if</span> f[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'csv'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>files_csv_small</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Sample01.csv', 'Sample02.csv', 'Sample03.csv', 'Sample04.csv', 'Sample05.csv', 'Sample06.csv', 'Sample07.csv', 'Sample08.csv', 'Sample09.csv', 'Sample10.csv', 'Sample11.csv', 'Sample12.csv']</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_small <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files_csv_small:</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(<span class="st">'Training/Small/'</span> <span class="op">+</span> f)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Sample'</span>]<span class="op">=</span>count</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    data.loc[:,<span class="st">'Differential_Pressure(psi)'</span>] <span class="op">=</span> (data[<span class="st">'Upstream_Pressure(psi)'</span>] <span class="op">-</span> data[<span class="st">'Downstream_Pressure(psi)'</span>])</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Clogged'</span>] <span class="op">=</span> np.where(((data[<span class="st">'Upstream_Pressure(psi)'</span>] <span class="op">-</span> data[<span class="st">'Downstream_Pressure(psi)'</span>])<span class="op">&gt;=</span><span class="dv">20</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                     , <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'TTF'</span>] <span class="op">=</span> data[<span class="st">'Time(s)'</span>].values[data[<span class="st">'Clogged'</span>].idxmax()]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'RUL'</span>] <span class="op">=</span> data[<span class="st">'TTF'</span>] <span class="op">-</span> data[<span class="st">'Time(s)'</span>]</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Up'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Upstream_Pressure(psi)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.01</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">3</span>,nyq<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Down'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Downstream_Pressure(psi)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.01</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">2</span>,nyq<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Flow'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Flow_Rate(ml/m)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.1</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">4</span>,nyq<span class="op">=</span><span class="dv">2</span>) </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Diff'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Differential_Pressure(psi)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.01</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">3</span>,nyq<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Clogged_Filter'</span>] <span class="op">=</span> np.where(((data[<span class="st">'Filtered_Up'</span>] <span class="op">-</span> data[<span class="st">'Filtered_Down'</span>])<span class="op">&gt;=</span><span class="dv">20</span>)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                     , <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'TTF_Filter'</span>] <span class="op">=</span> data[<span class="st">'Time(s)'</span>].values[data[<span class="st">'Clogged_Filter'</span>].idxmax()]</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'RUL_Filter'</span>] <span class="op">=</span> data[<span class="st">'TTF_Filter'</span>] <span class="op">-</span> data[<span class="st">'Time(s)'</span>]</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Particle_Large'</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> count <span class="op">&lt;=</span> <span class="dv">4</span>: </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">'Solid_Ratio'</span>] <span class="op">=</span> <span class="fl">0.4</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">5</span><span class="op">&lt;=</span> count <span class="op">&lt;=</span><span class="dv">8</span>:</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">'Solid_Ratio'</span>] <span class="op">=</span> <span class="fl">0.425</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">'Solid_Ratio'</span>] <span class="op">=</span> <span class="fl">0.45</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    df_small <span class="op">=</span> df_small.append(data)</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    count<span class="op">+=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-&lt;string&gt;:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_small <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> files_csv_small:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(<span class="st">'Training/Small/'</span> <span class="op">+</span> f)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Sample'</span>]<span class="op">=</span>count</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    data.loc[:,<span class="st">'Differential_Pressure(psi)'</span>] <span class="op">=</span> (data[<span class="st">'Upstream_Pressure(psi)'</span>] <span class="op">-</span> data[<span class="st">'Downstream_Pressure(psi)'</span>])</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Clogged'</span>] <span class="op">=</span> np.where(((data[<span class="st">'Upstream_Pressure(psi)'</span>] <span class="op">-</span> data[<span class="st">'Downstream_Pressure(psi)'</span>])<span class="op">&gt;=</span><span class="dv">20</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                     , <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'TTF'</span>] <span class="op">=</span> data[<span class="st">'Time(s)'</span>].values[data[<span class="st">'Clogged'</span>].idxmax()]</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'RUL'</span>] <span class="op">=</span> data[<span class="st">'TTF'</span>] <span class="op">-</span> data[<span class="st">'Time(s)'</span>]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Up'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Upstream_Pressure(psi)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.01</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">3</span>,nyq<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Down'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Downstream_Pressure(psi)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.01</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">2</span>,nyq<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Flow'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Flow_Rate(ml/m)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.1</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">4</span>,nyq<span class="op">=</span><span class="dv">2</span>) </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Filtered_Diff'</span>] <span class="op">=</span> butter_lowpass_filter(data[<span class="st">'Differential_Pressure(psi)'</span>].loc[data[<span class="st">'Sample'</span>] <span class="op">==</span> count], cutoff<span class="op">=</span><span class="fl">0.01</span>, fs<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="fl">0.1</span>, order<span class="op">=</span><span class="dv">3</span>,nyq<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Clogged_Filter'</span>] <span class="op">=</span> np.where(((data[<span class="st">'Filtered_Up'</span>] <span class="op">-</span> data[<span class="st">'Filtered_Down'</span>])<span class="op">&gt;=</span><span class="dv">20</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                     , <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'TTF_Filter'</span>] <span class="op">=</span> data[<span class="st">'Time(s)'</span>].values[data[<span class="st">'Clogged_Filter'</span>].idxmax()]</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'RUL_Filter'</span>] <span class="op">=</span> data[<span class="st">'TTF_Filter'</span>] <span class="op">-</span> data[<span class="st">'Time(s)'</span>]</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">'Particle_Large'</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> count <span class="op">&lt;=</span> <span class="dv">4</span>: </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">'Solid_Ratio'</span>] <span class="op">=</span> <span class="fl">0.4</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="dv">5</span><span class="op">&lt;=</span> count <span class="op">&lt;=</span><span class="dv">8</span>:</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">'Solid_Ratio'</span>] <span class="op">=</span> <span class="fl">0.425</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">'Solid_Ratio'</span>] <span class="op">=</span> <span class="fl">0.45</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    df_small <span class="op">=</span> df_small.append(data)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    count<span class="op">+=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> pd.concat([df_small, df_large])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="op">=</span> pd.concat([df_small, df_large])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_profiles <span class="op">=</span> pd.read_excel(path <span class="op">+</span> <span class="st">'</span><span class="ch">\\</span><span class="st">Training Operation Profiles of Samples.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_profiles <span class="op">=</span> pd.read_excel(path <span class="op">+</span> <span class="st">'</span><span class="ch">\\</span><span class="st">Training Operation Profiles of Samples.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="análise-descritiva" class="level3">
@@ -377,18 +351,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 1</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_large[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">36</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">40</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">44</span>:  </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Large) - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span> ,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_large[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">36</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">40</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">44</span>:  </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Large) - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span> ,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="1920"></p>
 </div>
@@ -397,18 +371,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 2</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_large[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="dv">33</span><span class="op">&lt;=</span>value<span class="op">&lt;=</span><span class="dv">36</span>:  </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Large) - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_large[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="dv">33</span><span class="op">&lt;=</span>value<span class="op">&lt;=</span><span class="dv">36</span>:  </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_large[<span class="st">'Time(s)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_large[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_large[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Large) - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-22-3.png" class="img-fluid" width="1920"></p>
 </div>
@@ -417,18 +391,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 3</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_small[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">1</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">5</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">9</span>:  </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Small) - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span> ,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_small[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">1</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">5</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">9</span>:  </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Small) - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span> ,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-24-5.png" class="img-fluid" width="1920"></p>
 </div>
@@ -437,18 +411,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 4</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_small[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="dv">1</span><span class="op">&lt;=</span>value<span class="op">&lt;=</span><span class="dv">4</span>:  </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Small) - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_small[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="dv">1</span><span class="op">&lt;=</span>value<span class="op">&lt;=</span><span class="dv">4</span>:  </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_small[<span class="st">'Time(s)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_small[<span class="st">'Downstream_Pressure(psi)'</span>].loc[df_small[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Down_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino (Small) - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-26-7.png" class="img-fluid" width="1920"></p>
 </div>
@@ -457,19 +431,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 5</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span><span class="dv">1</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">5</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">10</span>:  </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> value <span class="op">==</span><span class="dv">33</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small x Large '</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span><span class="dv">1</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">5</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">10</span>:  </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> value <span class="op">==</span><span class="dv">33</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small x Large '</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-28-9.png" class="img-fluid" width="1920"></p>
 </div>
@@ -478,20 +452,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 6</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span><span class="dv">9</span>:  </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Small - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> value <span class="op">==</span> <span class="dv">41</span>:  </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Large - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">20</span>, xmin<span class="op">=</span><span class="fl">0.5</span>, xmax<span class="op">=</span><span class="fl">1.2</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small x Large - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span><span class="dv">9</span>:  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Small - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> value <span class="op">==</span> <span class="dv">41</span>:  </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Large - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">20</span>, xmin<span class="op">=</span><span class="fl">0.5</span>, xmax<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small x Large - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-30-11.png" class="img-fluid" width="1920"></p>
 </div>
@@ -500,12 +474,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 7</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_style('darkgrid')</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_theme(style="whitegrid")</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.boxplot(x<span class="op">=</span>df_train[<span class="st">"Filtered_Up"</span>])</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"BoxPlot Filtered_Up"</span>, fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.show(ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_style('darkgrid')</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_theme(style="whitegrid")</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.boxplot(x<span class="op">=</span>df_train[<span class="st">"Filtered_Up"</span>])</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"BoxPlot Filtered_Up"</span>, fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.show(ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-32-13.png" class="img-fluid" width="1920"></p>
 </div>
@@ -514,19 +488,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 8</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">2</span>:  </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Differential_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Differential_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large x Small - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">2</span>:  </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Differential_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Differential_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large x Small - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-34-15.png" class="img-fluid" width="1920"></p>
 </div>
@@ -535,19 +509,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 9</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">4</span>:  </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Differential_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Differential_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Diff'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Diff - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large x Small com Filtro - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">4</span>:  </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Differential_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Differential_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Diff'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Diff - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large x Small com Filtro - 40% Solid Ratio'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-36-17.png" class="img-fluid" width="1920"></p>
 </div>
@@ -556,19 +530,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 10</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">4</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">8</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">12</span>:  </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Up'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Up(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">4</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">8</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">12</span>:  </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Up'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Up(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-38-19.png" class="img-fluid" width="1920"></p>
 </div>
@@ -577,19 +551,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 11</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">4</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">8</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">12</span>:  </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Flow_Rate(ml/m)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Flow_Rate(ml/m) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Filtered_Flow'].loc[df_train['Sample'] == value], label='Down_Pressure(psi) - Sample'+str(value))</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Flow_Rate(ml/m)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">4</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">8</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">12</span>:  </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Flow_Rate(ml/m)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Flow_Rate(ml/m) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Filtered_Flow'].loc[df_train['Sample'] == value], label='Down_Pressure(psi) - Sample'+str(value))</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Flow_Rate(ml/m)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-40-21.png" class="img-fluid" width="1920"></p>
 </div>
@@ -598,19 +572,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 12</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">4</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">8</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">12</span>:  </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Flow_Rate(ml/m)'].loc[df_train['Sample'] == value], label='Up_Pressure(psi) - Sample'+str(value))</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Flow'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Flow - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Filtered_Flow'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">4</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">8</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">12</span>:  </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Flow_Rate(ml/m)'].loc[df_train['Sample'] == value], label='Up_Pressure(psi) - Sample'+str(value))</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Flow'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Flow - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Filtered_Flow'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Small - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-42-23.png" class="img-fluid" width="1920"></p>
 </div>
@@ -619,19 +593,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 13</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Up'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Up(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large com Filtro - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Upstream_Pressure(psi)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Up_Pressure(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Up'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Up(psi) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Pressure(psi)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large com Filtro - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-44-25.png" class="img-fluid" width="1920"></p>
 </div>
@@ -640,19 +614,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 14</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Flow_Rate(ml/m)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Flow_Rate(ml/m) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Filtered_Flow'].loc[df_train['Sample'] == value], label='Down_Pressure(psi) - Sample'+str(value))</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Flow_Rate(ml/m)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Flow_Rate(ml/m)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Flow_Rate(ml/m) - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Filtered_Flow'].loc[df_train['Sample'] == value], label='Down_Pressure(psi) - Sample'+str(value))</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Flow_Rate(ml/m)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-46-27.png" class="img-fluid" width="1920"></p>
 </div>
@@ -661,19 +635,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 15</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Flow_Rate(ml/m)'].loc[df_train['Sample'] == value], label='Up_Pressure(psi) - Sample'+str(value))</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Flow'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Flow - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Filtered_Flow'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> df_train[<span class="st">'Sample'</span>].unique():</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> value <span class="op">==</span> <span class="dv">34</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">38</span> <span class="kw">or</span> value <span class="op">==</span> <span class="dv">42</span>:  </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.plot(df_train['Time(s)'].loc[df_train['Sample'] == value], df_train['Flow_Rate(ml/m)'].loc[df_train['Sample'] == value], label='Up_Pressure(psi) - Sample'+str(value))</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        plt.plot(df_train[<span class="st">'Time(s)'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], df_train[<span class="st">'Filtered_Flow'</span>].loc[df_train[<span class="st">'Sample'</span>] <span class="op">==</span> value], label<span class="op">=</span><span class="st">'Filtered_Flow - Sample'</span><span class="op">+</span><span class="bu">str</span>(value))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time(s)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Filtered_Flow'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Dados de Treino Large - Solid Ratio (40%, 42,5</span><span class="sc">% e</span><span class="st"> 45%)'</span>,fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.tick_params(labelsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-48-29.png" class="img-fluid" width="1920"></p>
 </div>
@@ -682,12 +656,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 16</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_style('darkgrid')</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_theme(style="whitegrid")</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.boxplot(x<span class="op">=</span>df_train[<span class="st">"Filtered_Flow"</span>])</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"BoxPlot Filtered_Flow"</span>, fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.show(ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_style('darkgrid')</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.set_theme(style="whitegrid")</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.boxplot(x<span class="op">=</span>df_train[<span class="st">"Filtered_Flow"</span>])</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"BoxPlot Filtered_Flow"</span>, fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.show(ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-50-31.png" class="img-fluid" width="1920"></p>
 </div>
@@ -696,12 +670,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 17</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>g<span class="op">=</span>sns.lmplot( x<span class="op">=</span><span class="st">"TTF_Filter"</span>, y<span class="op">=</span><span class="st">"Solid_Ratio"</span>, data<span class="op">=</span>df_train, fit_reg<span class="op">=</span><span class="va">False</span>, hue<span class="op">=</span><span class="st">'Particle_Large'</span>, legend<span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'darkgrid'</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span> <span class="st">'upper right'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Time to Fail x Solid Ratio"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>g.fig.set_size_inches(<span class="dv">20</span>,<span class="dv">10</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>g<span class="op">=</span>sns.lmplot( x<span class="op">=</span><span class="st">"TTF_Filter"</span>, y<span class="op">=</span><span class="st">"Solid_Ratio"</span>, data<span class="op">=</span>df_train, fit_reg<span class="op">=</span><span class="va">False</span>, hue<span class="op">=</span><span class="st">'Particle_Large'</span>, legend<span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'darkgrid'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span> <span class="st">'upper right'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Time to Fail x Solid Ratio"</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>g.fig.set_size_inches(<span class="dv">20</span>,<span class="dv">10</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-52-33.png" class="img-fluid" width="1920"></p>
 </div>
@@ -710,16 +684,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 19</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_cor <span class="op">=</span> (df_train.loc[:,[<span class="st">'RUL_Filter'</span>,<span class="st">'Filtered_Up'</span>, <span class="st">'Clogged_Filter'</span>, <span class="st">'Filtered_Diff'</span>, <span class="st">'Filtered_Down'</span>,<span class="st">'Filtered_Flow'</span>, <span class="st">'Solid_Ratio'</span>]])</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> FeatureCorrelation()</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>ax.fit(df_cor[[<span class="st">'Filtered_Up'</span>, <span class="st">'Clogged_Filter'</span>, <span class="st">'Filtered_Diff'</span>, <span class="st">'Filtered_Down'</span>,<span class="st">'Filtered_Flow'</span>, <span class="st">'Solid_Ratio'</span>]],df_cor[<span class="st">'RUL_Filter'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df_cor <span class="op">=</span> (df_train.loc[:,[<span class="st">'RUL_Filter'</span>,<span class="st">'Filtered_Up'</span>, <span class="st">'Clogged_Filter'</span>, <span class="st">'Filtered_Diff'</span>, <span class="st">'Filtered_Down'</span>,<span class="st">'Filtered_Flow'</span>, <span class="st">'Solid_Ratio'</span>]])</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> FeatureCorrelation()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>ax.fit(df_cor[[<span class="st">'Filtered_Up'</span>, <span class="st">'Clogged_Filter'</span>, <span class="st">'Filtered_Diff'</span>, <span class="st">'Filtered_Down'</span>,<span class="st">'Filtered_Flow'</span>, <span class="st">'Solid_Ratio'</span>]],df_cor[<span class="st">'RUL_Filter'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>FeatureCorrelation(ax=&lt;AxesSubplot:&gt;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">FeatureCorrelation</label><div class="sk-toggleable__content"><pre>FeatureCorrelation(ax=&lt;AxesSubplot:&gt;)</pre></div></div></div></div></div>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Correlação com RUL"</span>, fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>plt.show(ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Correlação com RUL"</span>, fontsize <span class="op">=</span> <span class="dv">20</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.show(ax)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-54-35.png" class="img-fluid" width="1920"></p>
 </div>
@@ -728,33 +702,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Gráfico 20</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dual_heat_map(data,figsize<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">15</span>),dual<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.1</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    corr_pearson<span class="op">=</span>data.corr(method<span class="op">=</span><span class="st">'pearson'</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    corr_spearman<span class="op">=</span>data.corr(method<span class="op">=</span><span class="st">'spearman'</span>)</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> np.zeros_like(corr_pearson)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    mask[np.triu_indices_from(mask)] <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dual:</span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">2</span>,figsize<span class="op">=</span>figsize)</span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(corr_pearson,cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, annot<span class="op">=</span><span class="va">True</span>, annot_kws<span class="op">=</span>{<span class="st">"size"</span>:<span class="dv">14</span>},mask<span class="op">=</span>mask,square<span class="op">=</span><span class="va">True</span>,ax<span class="op">=</span>ax[<span class="dv">0</span>],fmt<span class="op">=</span><span class="st">'.2f'</span>,cbar<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(corr_spearman,cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, annot<span class="op">=</span><span class="va">True</span>, annot_kws<span class="op">=</span>{<span class="st">"size"</span>:<span class="dv">14</span>},mask<span class="op">=</span>mask,square<span class="op">=</span><span class="va">True</span>,ax<span class="op">=</span>ax[<span class="dv">1</span>],fmt<span class="op">=</span><span class="st">'.2f'</span>,cbar<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">0</span>].set_title(<span class="st">'Pearson Correlation'</span>)</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].set_title(<span class="st">'Spearman Correlation'</span>)</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>figsize)</span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(corr_pearson,cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, annot<span class="op">=</span><span class="va">True</span>, annot_kws<span class="op">=</span>{<span class="st">"size"</span>:<span class="dv">14</span>},mask<span class="op">=</span>mask,square<span class="op">=</span><span class="va">True</span>,fmt<span class="op">=</span><span class="st">'.2f'</span>,cbar<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="st">'Pearson correlation'</span>)</span>
-<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
-<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dual_heat_map(data,figsize<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">15</span>),dual<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.1</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    corr_pearson<span class="op">=</span>data.corr(method<span class="op">=</span><span class="st">'pearson'</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    corr_spearman<span class="op">=</span>data.corr(method<span class="op">=</span><span class="st">'spearman'</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    mask <span class="op">=</span> np.zeros_like(corr_pearson)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    mask[np.triu_indices_from(mask)] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> dual:</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">2</span>,figsize<span class="op">=</span>figsize)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(corr_pearson,cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, annot<span class="op">=</span><span class="va">True</span>, annot_kws<span class="op">=</span>{<span class="st">"size"</span>:<span class="dv">14</span>},mask<span class="op">=</span>mask,square<span class="op">=</span><span class="va">True</span>,ax<span class="op">=</span>ax[<span class="dv">0</span>],fmt<span class="op">=</span><span class="st">'.2f'</span>,cbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(corr_spearman,cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, annot<span class="op">=</span><span class="va">True</span>, annot_kws<span class="op">=</span>{<span class="st">"size"</span>:<span class="dv">14</span>},mask<span class="op">=</span>mask,square<span class="op">=</span><span class="va">True</span>,ax<span class="op">=</span>ax[<span class="dv">1</span>],fmt<span class="op">=</span><span class="st">'.2f'</span>,cbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">0</span>].set_title(<span class="st">'Pearson Correlation'</span>)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].set_title(<span class="st">'Spearman Correlation'</span>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>,ncols<span class="op">=</span><span class="dv">1</span>,figsize<span class="op">=</span>figsize)</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>        sns.heatmap(corr_pearson,cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, annot<span class="op">=</span><span class="va">True</span>, annot_kws<span class="op">=</span>{<span class="st">"size"</span>:<span class="dv">14</span>},mask<span class="op">=</span>mask,square<span class="op">=</span><span class="va">True</span>,fmt<span class="op">=</span><span class="st">'.2f'</span>,cbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="st">'Pearson correlation'</span>)</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dual_heat_map(df_cor,figsize<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dual_heat_map(df_cor,figsize<span class="op">=</span>(<span class="dv">25</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="script_files/figure-html/unnamed-chunk-58-37.png" class="img-fluid" width="2400"></p>
 </div>
