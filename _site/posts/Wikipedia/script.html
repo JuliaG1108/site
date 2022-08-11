@@ -199,8 +199,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>O seguinte código visa extrair uma tabela de municípios do estado do Espírito Santo disponibilizado no site Wikipédia, através de métodos de Webscraping.</p>
-<p>Num primeiro momento, iremos baixar a página desejada da web.</p>
+<section id="extraindo-tabela-de-municípios-do-estado-do-espírito-santo-do-site-wikipedia-ultilizando-métodos-de-webscraping." class="level3">
+<h3 class="anchored" data-anchor-id="extraindo-tabela-de-municípios-do-estado-do-espírito-santo-do-site-wikipedia-ultilizando-métodos-de-webscraping.">Extraindo tabela de municípios do estado do Espírito Santo do site Wikipedia, ultilizando métodos de Webscraping.</h3>
+<ul>
+<li><strong>Acessando a página de interesse</strong></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install bs4</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!pip install requests</span></span>
@@ -211,47 +214,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> requests.get(<span class="st">"https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Esp%C3%ADrito_Santo_por_popula%C3%A7%C3%A3o"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(url.status_code)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Agora, iremos exibir o conteúdo HTML da página, formatado corretamente e armazena-lo no objeto soup.</p>
+<ul>
+<li><strong>Armazenando o conteúdo HTML da página:</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(url.content, <span class="st">'html.parser'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(soup.prettify())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>conteudo <span class="op">=</span> BeautifulSoup(url.content, <span class="st">'html.parser'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Extraindo a tabela:</p>
+<ul>
+<li><strong>Obtendo a tabela:</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tabela <span class="op">=</span> soup.find(<span class="st">'table'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(tabela)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> conteudo.find(<span class="st">'table'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Extraindo os títulos das colunas:</p>
+<ul>
+<li><strong>Extraindo os títulos das colunas:</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>titulos <span class="op">=</span> [i.text <span class="cf">for</span> i <span class="kw">in</span> tabela.find_all(<span class="st">'th'</span>)]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(titulos)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> [i.text <span class="cf">for</span> i <span class="kw">in</span> table.find_all(<span class="st">'th'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Criando o dataframe que armazenará nossa tabela com as informações dos municípios.</p>
+<ul>
+<li><strong>Dataframe para armazenar a tabela</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(columns <span class="op">=</span> titulos)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Empty DataFrame
-Columns: [Posição, Município, População
-]
-Index: []</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame(columns <span class="op">=</span> titles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>Agora iremos coletar as informações que preencherão nossa tabela:</p>
+<ul>
+<li><strong>Preenchendo a tabela:</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> tabela.find_all(<span class="st">'tr'</span>)[<span class="dv">1</span>:]:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    row_data <span class="op">=</span> j.find_all(<span class="st">'td'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [i.text <span class="cf">for</span> i <span class="kw">in</span> row_data]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    length <span class="op">=</span> <span class="bu">len</span>(df)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    df.loc[length] <span class="op">=</span> row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> j <span class="kw">in</span> table.find_all(<span class="st">'tr'</span>)[<span class="dv">1</span>:]:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    row_data <span class="op">=</span> j.find_all(<span class="st">'td'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [i.text <span class="cf">for</span> i <span class="kw">in</span> row_data]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    length <span class="op">=</span> <span class="bu">len</span>(data)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    data.loc[length] <span class="op">=</span> row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Teremos algo nesse formato:</p>
+<ul>
+<li><strong>Tabela:</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Posição                 Município População\n
 0        1                     Serra   527.240\n
@@ -269,16 +270,23 @@ Index: []</code></pre>
 [78 rows x 3 columns]</code></pre>
 </div>
 </div>
-<p>No entanto, percebemos alguns detalhes indesejados na nossa tabela, como por exemplo, o final \&nbsp;n e [2] na linha 16.</p>
+<ul>
+<li><strong>Limpando a tabela:</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>populacao <span class="op">=</span> df[<span class="st">'População</span><span class="ch">\n</span><span class="st">'</span>]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>populacao1 <span class="op">=</span> [i.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)[<span class="dv">0</span>].replace(<span class="st">'</span><span class="ch">\xa0</span><span class="st">'</span>,<span class="st">'.'</span>).split(<span class="st">'[2]'</span>)[<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> populacao]</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'População</span><span class="ch">\n</span><span class="st">'</span>] <span class="op">=</span> populacao1</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">'População</span><span class="ch">\n</span><span class="st">'</span>: <span class="st">'População'</span>}) </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>populacao <span class="op">=</span> data[<span class="st">'População</span><span class="ch">\n</span><span class="st">'</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>populacao1 <span class="op">=</span> [i.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)[<span class="dv">0</span>].replace(<span class="st">'</span><span class="ch">\xa0</span><span class="st">'</span>,<span class="st">'.'</span>).split(<span class="st">'[2]'</span>)[<span class="dv">0</span>] <span class="cf">for</span> i <span class="kw">in</span> populacao]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'População</span><span class="ch">\n</span><span class="st">'</span>] <span class="op">=</span> populacao1</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.rename(columns<span class="op">=</span>{<span class="st">'População</span><span class="ch">\n</span><span class="st">'</span>: <span class="st">'População'</span>}) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>Tabela Final:</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Posição                 Município População
 0        1                     Serra   527.240
@@ -298,6 +306,7 @@ Index: []</code></pre>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

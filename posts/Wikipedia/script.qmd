@@ -13,7 +13,7 @@ library(reticulate)
 
 ```
 
--**Acessando a página de interesse**
+- **Acessando a página de interesse**
 
 ```{python}
 #!pip install bs4
