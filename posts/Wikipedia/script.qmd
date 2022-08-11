@@ -1,0 +1,88 @@
+---
+title: "Webscraping no Wikipédia"
+author: "Júlia Gualberto"
+date: "2022-07-19"
+categories: [code, analysis, python]
+image: "wikipedia.jpg"
+---
+
+### Extraindo tabela de municípios do estado do Espírito Santo do site Wikipedia, ultilizando métodos de Webscraping.
+
+```{r,include=FALSE,warning=FALSE}
+library(reticulate)
+
+```
+
+-**Acessando a página de interesse**
+
+```{python}
+#!pip install bs4
+#!pip install requests
+
+from bs4 import BeautifulSoup
+import pandas as pd
+import requests
+url = requests.get("https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Esp%C3%ADrito_Santo_por_popula%C3%A7%C3%A3o")
+#print(url.status_code)
+```
+
+- **Armazenando o conteúdo HTML da página:**
+
+```{python}
+conteudo = BeautifulSoup(url.content, 'html.parser')
+```
+
+- **Obtendo a tabela:**
+
+```{python}
+table = conteudo.find('table')
+```
+
+- **Extraindo os títulos das colunas:**
+
+```{python}
+titles = [i.text for i in table.find_all('th')]
+```
+
+
+- **Dataframe para armazenar a tabela**
+
+```{python}
+data = pd.DataFrame(columns = titles)
+```
+
+- **Preenchendo a tabela:**
+
+```{python}
+for j in table.find_all('tr')[1:]:
+    row_data = j.find_all('td')
+    row = [i.text for i in row_data]
+    length = len(data)
+    data.loc[length] = row
+```
+
+- **Tabela:**
+
+```{python}
+print(data)
+```
+
+
+- **Limpando a tabela:**
+
+```{python}
+populacao = data['População\n']
+
+populacao1 = [i.split('\n')[0].replace('\xa0','.').split('[2]')[0] for i in populacao]
+
+data['População\n'] = populacao1
+
+data = data.rename(columns={'População\n': 'População'}) 
+```
+
+- **Tabela Final:**
+
+```{python}
+print(data)
+```
+
